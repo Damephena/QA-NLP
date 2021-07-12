@@ -15,7 +15,7 @@ transformers_logger.setLevel(logging.WARNING)
 
 model = QuestionAnsweringModel(
     'distilbert',
-    'official-default2-epoch-3',
+    'Ifenna/dbert-3epoch',
     use_cuda=False
 )
 
