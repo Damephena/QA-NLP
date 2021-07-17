@@ -1,4 +1,5 @@
 from simpletransformers.question_answering import QuestionAnsweringModel
+import torch
 import logging
 
 import streamlit as st
@@ -9,10 +10,11 @@ logging.basicConfig(level=logging.INFO)
 transformers_logger = logging.getLogger('transformers')
 transformers_logger.setLevel(logging.WARNING)
 
+has_cuda = torch.cuda.is_available()
 model = QuestionAnsweringModel(
     'distilbert',
     'Ifenna/dbert-3epoch',
-    use_cuda=False
+    use_cuda=has_cuda
 )
 
 @st.cache(suppress_st_warning=True)
