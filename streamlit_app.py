@@ -1,12 +1,8 @@
-from simpletransformers.question_answering import QuestionAnsweringModel, QuestionAnsweringArgs
-import torch
-import json
+from simpletransformers.question_answering import QuestionAnsweringModel
 import logging
-import os
 
 import streamlit as st
 import wikipedia
-from typing import Dict
 import random
 
 logging.basicConfig(level=logging.INFO)
