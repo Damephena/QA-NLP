@@ -37,6 +37,9 @@ def answer_question(context, question):
 @st.cache(suppress_st_warning=True)
 def get_wiki_paragraph(query):
     search = wikipedia.search(query)
+    if not search:
+        st.info(f'We cannot seem to find {query} on Wikipedia.')
+        return None
     try:
         summary = wikipedia.summary(search[0], chars=384)
     except wikipedia.DisambiguationError as err:
@@ -55,7 +58,7 @@ def answer_search(context, question):
             else:
                 st.info('Sorry, I do not have any answer to this question')
     except Exception as e:
-        st.warning('You must provide a valid original paragraph')
+        st.warning('You must provide a valid paragraph')
 
 def check_question(context, question):
 
